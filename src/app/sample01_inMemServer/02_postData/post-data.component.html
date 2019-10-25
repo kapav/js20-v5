@@ -1,0 +1,10 @@
+<div>
+  <ul>
+    <li *ngFor="let item of itemArray">{{ item.name }}</li>
+  </ul>
+  <div>
+    Идентификатор: <input type="number" [(ngModel)]="id">
+    Имя: <input type="text" [(ngModel)]="name">
+  </div>
+  <button (click)="clickHandler()">Отправить данные</button>
+</div>
