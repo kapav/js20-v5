@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core'
-import {HttpClient, HttpRequest} from '@angular/common/http'
+import {HttpClient} from '@angular/common/http'
 
 @Component({
   selector: 'app-post-data',
   templateUrl: './post-data.component.html'
 })
-export class PostDataComponent {
+export class PostDataComponent implements OnInit {
 
   id: number
   name: string
@@ -14,7 +14,7 @@ export class PostDataComponent {
   constructor(private httpClient: HttpClient) {}
 
   ngOnInit() {
-    this.httpClient.get('app/items').subscribe(
+    this.httpClient.get<any[]>('app/items').subscribe(
       result => this.itemArray = result,
       error => console.log(error.statusText)
     )
@@ -22,12 +22,12 @@ export class PostDataComponent {
 
   clickHandler() {
     this.httpClient.post('app/items', {
-      id: this.id,
+      id: +this.id,
       name: this.name
     }).subscribe(
       result => {
-        let json = result
-        if (json) { this.itemArray.push(json) }
+        console.log(result)
+        if (result) { this.itemArray.push(result) }
       },
       error => console.log(error.statusText)
     )

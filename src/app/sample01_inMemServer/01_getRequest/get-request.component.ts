@@ -20,11 +20,11 @@ export class GetRequestComponent {
 
   clickHandler() {
     // this.http.get - отправка get запроса по указанному
-    // адресу. метод возвращает объект Observable из
+    // адресу. Метод возвращает объект Observable из
     // библиотеки RxJS. С помощью метода subscribe
     // подписываемся на событие. Событие произойдёт после
     // получения ответа от сервера.
-    this.httpClient.get('app/items').subscribe(
+    this.httpClient.get<any[]>('app/items').subscribe(
       result => {
         console.log(result)
         this.itemArray = result

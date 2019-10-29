@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import {HomePageComponent} from './home-page/home-page.component'
 import {GetRequestComponent} from './sample01_inMemServer/01_getRequest/get-request.component'
 import {PostDataComponent} from './sample01_inMemServer/02_postData/post-data.component'
+import {RequestOptionsComponent} from './sample01_inMemServer/03_requestOptions/request-options.component'
+import {SearchParamsComponent} from './sample01_inMemServer/04_searchParams/search-params.component'
 
 import {ItemData} from './sample01_inMemServer/inMemoryServer'
 
@@ -17,14 +19,18 @@ import {ItemData} from './sample01_inMemServer/inMemoryServer'
     AppComponent,
     HomePageComponent,
     GetRequestComponent,
-    PostDataComponent
+    PostDataComponent,
+    RequestOptionsComponent,
+    SearchParamsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(ItemData)
+    HttpClientInMemoryWebApiModule.forRoot(ItemData, {
+      dataEncapsulation: false
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
